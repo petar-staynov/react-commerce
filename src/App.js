@@ -5,6 +5,7 @@ import ShopPage from "./components/Pages/ShopPage/ShopPage";
 
 import {Route} from "react-router";
 import Navbar from "./components/Navbar/Navbar";
+import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path='/shop/sneakers' exact component={SneakerPage}/>
             <Route path='/shop/mens' exact component={MensPage}/>
             <Route path='/shop/womens' exact component={WomensPage}/>
+            <Route path='/authenticate' exact component={LoginRegisterContainer}/>
         </>
     );
 }

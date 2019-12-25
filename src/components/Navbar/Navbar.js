@@ -15,6 +15,7 @@ const Navbar = (props) => {
                     <NavLink to='/' exact className='nav-item'>Home</NavLink>
                     <NavLink to='/shop' exact className='nav-item'>Shop</NavLink>
                     <NavLink to='/contact' exact className='nav-item'>Contact</NavLink>
+                    <NavLink to='/authenticate' exact className='nav-item'>Sign In</NavLink>
                 </div>
             </nav>
         </header>
