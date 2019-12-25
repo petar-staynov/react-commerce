@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import FormInput from "../../Shared/FormInput/FormInput";
 
 class Login extends Component {
     constructor(props) {
@@ -12,7 +13,6 @@ class Login extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.email !== this.props.email || prevState.password !== this.props.password) {
-            console.log('update state');
             this.setState({
                 email: this.props.email,
                 password: this.props.password,
@@ -25,30 +25,32 @@ class Login extends Component {
 
     render() {
         return (
-            <div className='sign-in'>
+            <div>
                 <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.props.handleSubmit}>
-                    <label>Email</label>
-                    <input
+                    <FormInput
                         name='email'
-                        type='text'
-                        placeholder="Email..."
-                        onChange={this.props.handleEmailFieldChange}
+                        type='email'
+                        label='Email'
+                        handleChange={this.props.handleEmailFieldChange}
                         value={this.state.email}
                         required
                     />
-                    <label>Password</label>
-                    <input
+
+                    <FormInput
                         name='password'
                         type='password'
-                        placeholder="Password..."
-                        onChange={this.props.handlePasswordFieldChange}
+                        label='Password'
+                        handleChange={this.props.handlePasswordFieldChange}
                         value={this.state.password}
                         required
                     />
 
-                    <input type='submit' value='Submit form'/>
+                    <input
+                        type='submit'
+                        value='Submit form'
+                    />
                 </form>
             </div>
         );
