@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import './Login.scss'
 import FormInput from "../../Shared/FormInput/FormInput";
+import Button from "../../Shared/Button/Button";
 
 class Login extends Component {
     constructor(props) {
@@ -25,7 +27,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className='sign-in'>
                 <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.props.handleSubmit}>
@@ -47,10 +49,10 @@ class Login extends Component {
                         required
                     />
 
-                    <input
+                    <Button
                         type='submit'
                         value='Submit form'
-                    />
+                    >Sign in</Button>
                 </form>
             </div>
         );
