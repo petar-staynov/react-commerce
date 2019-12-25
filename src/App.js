@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Homepage from "./components/Pages/Homepage/Homepage";
+import ShopPage from "./components/Pages/ShopPage/ShopPage";
+
 import {Route} from "react-router";
 
 const HatsPage = () => (<h1>Hats</h1>);
@@ -18,7 +20,7 @@ function App() {
     return (
         <div>
             <Route path='/' exact component={Homepage}/>
-            <Route path='/shop' exact component={Homepage}/>
+            <Route path='/shop' exact component={ShopPage}/>
             <Route path='/shop/hats' exact component={HatsPage}/>
             <Route path='/shop/jackets' exact component={JacketsPage}/>
             <Route path='/shop/sneakers' exact component={SneakerPage}/>
