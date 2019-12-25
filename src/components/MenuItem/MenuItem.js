@@ -1,25 +1,27 @@
 import React from 'react';
 import './MenuItem.scss';
+import {withRouter} from "react-router";
+import {Link} from "react-router-dom";
 
-function MenuItem(props) {
+const MenuItem = (props) => {
     const backgroundImageStyle = {
-        backgroundImage: `url(${props.imageUrl })`,
+        backgroundImage: `url(${props.imageUrl})`,
     };
 
-    const menuItemClassName= `menu-item ${props.size}`;
+    const menuItemClassName = `menu-item${props.size ? ` ${props.size}` : ''}`;
 
     const title = props.title.charAt(0).toUpperCase() + props.title.slice(1);
+
     return (
-        <div className={menuItemClassName} >
+        <Link to={props.linkUrl} className={menuItemClassName}>
             <div className='background-image' style={backgroundImageStyle}></div>
             <div className='content'>
                 <h1 className='title'>{title}</h1>
                 <span className='subtitle'>SHOP NOW</span>
             </div>
-        </div>
+        </Link>
     )
 };
 
 
-
-export default MenuItem;
+export default withRouter(MenuItem);

@@ -48,7 +48,7 @@ class Directory extends Component {
         return (
             <div className='directory-menu'>
                 {this.state.menuItems.map((item, index) => {
-                    return <MenuItem key={index} {...item}/>
+                    return <MenuItem key={item.id} {...item}/>
                 })}
             </div>
         );
