@@ -10,7 +10,7 @@
     width: 70px;
     padding: 25px;
   }
-  
+
   .nav-items {
     width: 50%;
     height: 100%;
@@ -22,6 +22,14 @@
       padding: 0px 15px;
       font-size: larger;
       text-decoration: none;
+
+      &:hover {
+        color: darkorange;
+      }
+    }
+
+    .active {
+      color: darkorange;
     }
   }
 }

@@ -12,9 +12,9 @@ const Navbar = (props) => {
                 </NavLink>
 
                 <div className='nav-items'>
-                    <NavLink to='/' className='nav-item'>Home</NavLink>
-                    <NavLink to='/shop' className='nav-item'>Shop</NavLink>
-                    <NavLink to='/contact' className='nav-item'>Contact</NavLink>
+                    <NavLink to='/' exact className='nav-item'>Home</NavLink>
+                    <NavLink to='/shop' exact className='nav-item'>Shop</NavLink>
+                    <NavLink to='/contact' exact className='nav-item'>Contact</NavLink>
                 </div>
             </nav>
         </header>
