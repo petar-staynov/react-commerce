@@ -53,6 +53,9 @@ class Login extends Component {
                         type='submit'
                         value='Submit form'
                     >Sign in</Button>
+                    <Button
+                        onClick={this.props.googleLogin}
+                    >Sign in with Google</Button>
                 </form>
             </div>
         );

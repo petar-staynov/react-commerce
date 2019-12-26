@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Login from "./Login";
 import Register from "./Register";
+import {signInWithGoogle} from "../../../firebase/firebase.utils";
 
 class LoginRegisterContainer extends Component {
     constructor(props) {
@@ -12,8 +13,11 @@ class LoginRegisterContainer extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('submit');
+        console.log(e);
+    };
+
+    handleGoogleLogin = (e) => {
+        signInWithGoogle()
     };
 
     handleEmailFieldChange = (e) => {
@@ -34,6 +38,7 @@ class LoginRegisterContainer extends Component {
                     email={this.state.email}
                     password={this.state.password}
                     handleSubmit={this.handleSubmit}
+                    googleLogin={this.handleGoogleLogin}
                     handleEmailFieldChange={this.handleEmailFieldChange}
                     handlePasswordFieldChange={this.handlePasswordFieldChange}
                 />
