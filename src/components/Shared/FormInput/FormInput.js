@@ -2,6 +2,9 @@ import React from 'react';
 import './FormInput.scss'
 
 const FormInput = ({handleChange, label, ...otherProps}) => {
+    let className = 'form-input-label';
+    if(otherProps.value.length) className += ' shrink';
+
     return (
         <div className='group'>
             <input
@@ -11,7 +14,7 @@ const FormInput = ({handleChange, label, ...otherProps}) => {
             />
             {label ? (
                 <label
-                    className={`form-input-label ${otherProps.value.length ? 'shrink' : ''}`}
+                    className={className}
                 >{label}</label>
             ) : null}
         </div>
