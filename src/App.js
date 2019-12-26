@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import {Route} from "react-router";
 import './App.css';
+
 import Homepage from "./components/Pages/Homepage/Homepage";
 import ShopPage from "./components/Pages/ShopPage/ShopPage";
-
-import {Route} from "react-router";
 import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
-import {auth} from "./firebase/firebase.utils";
+
+import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 
 
 const HatsPage = () => (<h1>Hats</h1>);
@@ -26,10 +27,11 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
             this.setState({
                 currentUser: user,
             });
+            await createUserProfileDocument(user);
         });
     }
 
