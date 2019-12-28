@@ -61,29 +61,7 @@ class LoginRegisterContainer extends Component {
                 console.log('Logged in with Google');
             });
     };
-
-    handleNameFieldChange = (e) => {
-        this.setState({
-            displayName: e.target.value,
-        })
-    };
-
-    handleEmailFieldChange = (e) => {
-        this.setState({
-            email: e.target.value,
-        })
-    };
-    handlePasswordFieldChange = (e) => {
-        this.setState({
-            password: e.target.value,
-        })
-    };
-
-    handleConfirmPasswordFieldChange = (e) => {
-        this.setState({
-            confirmPassword: e.target.value,
-        })
-    };
+    
 
     render() {
         return (
