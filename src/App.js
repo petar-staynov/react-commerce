@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 
 import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
+import Logout from "./components/Pages/LoginRegister/Logout";
 
 
 const HatsPage = () => (<h1>Hats</h1>);
@@ -63,6 +64,7 @@ class App extends Component {
                 <Route path='/shop/mens' exact component={MensPage}/>
                 <Route path='/shop/womens' exact component={WomensPage}/>
                 <Route path='/authenticate' exact component={LoginRegisterContainer}/>
+                <Route path='/logout' exact component={Logout}/>
             </>
         );
     };
