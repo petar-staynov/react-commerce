@@ -23,13 +23,13 @@ class LoginRegisterContainer extends Component {
 
         //TODO custom alert here
         if (password !== confirmPassword) {
-            alert('Password do not match');
+            alert('Passwords do not match');
             return;
         }
 
         try {
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
-            await createUserProfileDocument(user, {displayName})
+            await createUserProfileDocument(user, {displayName});
 
             /** Clears form **/
             this.setState({
@@ -39,20 +39,38 @@ class LoginRegisterContainer extends Component {
                 confirmPassword: '',
             })
         } catch (e) {
+            if(e.code === "auth/email-already-in-use"){
+                alert("Email already registered.")
+            }
             console.log(e);
         }
     };
 
-    handleChange = event =>{
+    handleChange = event => {
         const {name, value} = event.target;
         this.setState({
             [name]: value
         })
     };
 
-    handleLoginSubmit = (event) => {
+    handleLoginSubmit = async event => {
         event.preventDefault();
-        console.log(event);
+        const {displayName, email, password, confirmPassword} = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+
+            /*Clears form*/
+            this.setState({
+                email: '',
+                password: '',
+            })
+        } catch (e) {
+            if(e.code === "auth/user-not-found"){
+                alert('No user with such email found');
+            }
+            console.log(e);
+        }
     };
 
     handleGoogleLogin = (event) => {
@@ -61,7 +79,7 @@ class LoginRegisterContainer extends Component {
                 console.log('Logged in with Google');
             });
     };
-    
+
 
     render() {
         return (
