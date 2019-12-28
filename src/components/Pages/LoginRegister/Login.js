@@ -35,7 +35,7 @@ class Login extends Component {
                         name='email'
                         type='email'
                         label='Email'
-                        handleChange={this.props.handleEmailFieldChange}
+                        handleChange={this.props.handleChange}
                         value={this.state.email}
                         required
                     />
@@ -44,7 +44,7 @@ class Login extends Component {
                         name='password'
                         type='password'
                         label='Password'
-                        handleChange={this.props.handlePasswordFieldChange}
+                        handleChange={this.props.handleChange}
                         value={this.state.password}
                         required
                     />
