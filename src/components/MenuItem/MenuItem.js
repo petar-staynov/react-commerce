@@ -1,7 +1,6 @@
 import React from 'react';
 import './MenuItem.scss';
-import {withRouter} from "react-router";
-import {Link} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 
 const MenuItem = (props) => {
     const backgroundImageStyle = {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route} from "react-router";
+import {Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import './App.css';
