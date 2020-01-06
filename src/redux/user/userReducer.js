@@ -1,4 +1,4 @@
-import {UserActionTypes} from "./userTypes";
+import {UserActionTypes} from "./userActionTypes";
 
 const INITIAL_STATE = {
     currentUser: null,
@@ -11,7 +11,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUser: action.payload,
             };
-
         default:
             return state;
     }
