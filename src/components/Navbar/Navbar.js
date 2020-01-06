@@ -3,13 +3,14 @@ import './Navbar.scss';
 import {NavLink} from "react-router-dom";
 import {ReactComponent as Logo} from '../../assets/header-logo.svg';
 import {auth} from "../../firebase/firebase.utils";
+import {connect} from "react-redux";
 
 const Navbar = ({currentUser}) => {
     let userAuthElement = <NavLink to='/authenticate' exact className='nav-item'>Sign In</NavLink>;
-    if(currentUser){
+    if (currentUser) {
         userAuthElement = <NavLink to='/logout' exact className='nav-item'>Sign Out</NavLink>;
     }
-
+    
     return (
         <header>
             <nav className='navbar'>
@@ -28,4 +29,8 @@ const Navbar = ({currentUser}) => {
     )
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Navbar);
