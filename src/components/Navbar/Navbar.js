@@ -3,8 +3,11 @@ import './Navbar.scss';
 import {NavLink} from "react-router-dom";
 import {ReactComponent as Logo} from '../../assets/header-logo.svg';
 import {connect} from "react-redux";
+import {createStructuredSelector} from "reselect";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
+import {selectCartHidden} from "../../redux/cart/cartSelectors";
+import {selectCurrentUser} from "../../redux/user/UserSelector";
 
 const Navbar = ({currentUser, cartHidden}) => {
     let userAuthElement = <NavLink to='/authenticate' exact className='nav-item'>Sign In</NavLink>;
@@ -34,9 +37,9 @@ const Navbar = ({currentUser, cartHidden}) => {
     )
 };
 
-const mapStateToProps = ({user, cart}) => ({
-    currentUser: user.currentUser,
-    cartHidden: cart.cartHidden,
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    cartHidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Navbar);
