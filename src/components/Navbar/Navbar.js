@@ -10,10 +10,10 @@ import {selectCartHidden} from "../../redux/cart/cartSelectors";
 import {selectCurrentUser} from "../../redux/user/UserSelector";
 
 const Navbar = ({currentUser, cartHidden}) => {
-    let userAuthElement = <NavLink to='/authenticate' exact className='nav-item'>Sign In</NavLink>;
-    if (currentUser) {
-        userAuthElement = <NavLink to='/logout' exact className='nav-item'>Sign Out</NavLink>;
-    }
+    const userAuthElement = currentUser
+        ? <NavLink to='/logout' exact className='nav-item'>Sign Out</NavLink>
+        : <NavLink to='/authenticate' exact className='nav-item'>Sign In</NavLink>;
+
 
     return (
         <header>
