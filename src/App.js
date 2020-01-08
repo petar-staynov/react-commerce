@@ -3,7 +3,7 @@ import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/UserSelector";
-
+import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 
 import './App.css';
 
@@ -11,11 +11,8 @@ import Homepage from "./components/Pages/Homepage/Homepage";
 import ShopPage from "./components/Pages/ShopPage/ShopPage";
 import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
-
-import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 import Logout from "./components/Pages/LoginRegister/Logout";
 import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
-
 
 const HatsPage = () => (<h1>Hats</h1>);
 const JacketsPage = () => (<h1>JACKETS</h1>);
