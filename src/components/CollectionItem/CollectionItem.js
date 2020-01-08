@@ -2,7 +2,7 @@ import React from 'react';
 import './CollectionItem.scss';
 import Button from "../Shared/Button/Button";
 import {connect} from 'react-redux';
-import {addItem} from "../../redux/cart/cartActions";
+import {addItemAction} from "../../redux/cart/cartActions";
 
 const CollectionItem = ({item, addItem}) => {
     const imageStyle = {
@@ -23,7 +23,7 @@ const CollectionItem = ({item, addItem}) => {
 
 const mapDispatchToProps = dispatch => (
     {
-        addItem: item => dispatch(addItem(item))
+        addItem: item => dispatch(addItemAction(item))
     }
 );
 

@@ -10,7 +10,12 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
                 return cartItem
             }
         })
-    } else {
-        return [...cartItems, {...cartItemToAdd, quantity: 1}]
     }
+    return [...cartItems, {...cartItemToAdd, quantity: 1}]
+};
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+    let newCartItems =
+        cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
+    return [...newCartItems]
 };

@@ -2,19 +2,19 @@ import React from 'react';
 import {ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
-import {toggleCartHidden, hideCart} from "../../redux/cart/cartActions";
+import {toggleCartHiddenAction, hideCartAction} from "../../redux/cart/cartActions";
 import {selectCartItemsCount} from "../../redux/cart/cartSelectors";
 
 import './CartIcon.scss';
 
 
-const CartIcon = ({toggleCartHidden, itemCount, history, hideCart, ...state}) => {
+const CartIcon = ({toggleCartHiddenAction, itemCount, history, hideCartAction, ...state}) => {
     history.listen(() => {
-        hideCart();
+        hideCartAction();
     });
 
     return (
-        <div className='cart-icon' onClick={toggleCartHidden}>
+        <div className='cart-icon' onClick={toggleCartHiddenAction}>
             <ShoppingIcon className='shopping-icon'/>
             <span className='item-count'>{itemCount}</span>
         </div>
@@ -27,8 +27,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden()),
-    hideCart: () => dispatch(hideCart()),
+    toggleCartHiddenAction: () => dispatch(toggleCartHiddenAction()),
+    hideCartAction: () => dispatch(hideCartAction()),
 });
 
 
