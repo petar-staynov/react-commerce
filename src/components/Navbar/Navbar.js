@@ -7,7 +7,7 @@ import {createStructuredSelector} from "reselect";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
 import {selectCartHidden} from "../../redux/cart/cartSelectors";
-import {selectCurrentUser} from "../../redux/user/UserSelector";
+import {selectCurrentUser} from "../../redux/user/userSelector";
 
 const Navbar = ({currentUser, cartHidden}) => {
     const userAuthElement = currentUser

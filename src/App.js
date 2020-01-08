@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
-import {selectCurrentUser} from "./redux/user/UserSelector";
+import {selectCurrentUser} from "./redux/user/userSelector";
 import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 
 import './App.css';
