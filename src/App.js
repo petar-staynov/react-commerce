@@ -3,6 +3,8 @@ import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/UserSelector";
+
+
 import './App.css';
 
 import Homepage from "./components/Pages/Homepage/Homepage";
@@ -12,6 +14,7 @@ import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegist
 
 import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 import Logout from "./components/Pages/LoginRegister/Logout";
+import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
 
 
 const HatsPage = () => (<h1>Hats</h1>);
@@ -40,9 +43,11 @@ class App extends Component {
         });
     }
 
+
     componentWillUnmount() {
         this.unsubscribeFromAuth();
     }
+
 
     authenticationRoute = () => {
         if (this.props.currentUser) {
@@ -68,6 +73,7 @@ class App extends Component {
                 <Route path='/shop/womens' exact component={WomensPage}/>
                 <Route path='/authenticate' exact render={this.authenticationRoute}/>
                 <Route path='/logout' exact component={Logout}/>
+                <Route path='/checkout' exact component={CheckoutPage}/>
             </>
         );
     };
