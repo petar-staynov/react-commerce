@@ -31,3 +31,10 @@ export const removeItemAction = (item) => (
         payload: item,
     }
 );
+
+export const decreaseItemAction = (item) => (
+    {
+        type: CartActionTypes.DECREASE_ITEM,
+        payload: item,
+    }
+);
