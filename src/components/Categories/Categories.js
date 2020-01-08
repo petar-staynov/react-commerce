@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import MenuItem from "../MenuItem/MenuItem";
 import {connect} from "react-redux";
 import {selectCategories} from "../../redux/categories/categoriesSelector";
