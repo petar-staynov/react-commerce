@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 import Logout from "./components/Pages/LoginRegister/Logout";
 import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
+import CollectionPage from "./components/Pages/CollectionPage/CollectionPage";
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -52,6 +53,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={Homepage}/>
                     <Route exact path='/shop' component={ShopPage}/>
+                    <Route exact path='/shop/:categoryName' component={CollectionPage}/>
                     <Route exact path='/authenticate' render={this.authenticationRoute}/>
                     <Route exact path='/logout' component={Logout}/>
                     <Route exact path='/checkout' component={CheckoutPage}/>
