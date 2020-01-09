@@ -14,12 +14,8 @@ class LoginRegisterContainer extends Component {
             email: '',
             password: '',
             confirmPassword: '',
-        }
+        };
     }
-
-    redirectToIndex = () =>{
-        this.props.history.push('/');
-    };
 
     handleRegisterSubmit = async event => {
         event.preventDefault();
@@ -42,8 +38,6 @@ class LoginRegisterContainer extends Component {
                 password: '',
                 confirmPassword: '',
             });
-
-            this.redirectToIndex();
         } catch (e) {
             if(e.code === "auth/email-already-in-use"){
                 alert("Email already registered.")
@@ -71,9 +65,6 @@ class LoginRegisterContainer extends Component {
                 email: '',
                 password: '',
             });
-
-            this.redirectToIndex();
-
         } catch (e) {
             if(e.code === "auth/user-not-found"){
                 alert('No user with such email found');
@@ -86,8 +77,6 @@ class LoginRegisterContainer extends Component {
         signInWithGoogle()
             .then(r => {
                 console.log('Logged in with Google');
-
-                this.redirectToIndex();
             });
     };
 
