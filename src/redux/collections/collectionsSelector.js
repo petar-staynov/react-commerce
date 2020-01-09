@@ -9,7 +9,5 @@ export const selectCollections = createSelector(
 
 export const selectCollectionByName = collectionUrlParam => createSelector(
     [selectCollections],
-    collections => {
-        return collections.find(c => c.routeName === collectionUrlParam)
-    }
+    collections => collections[collectionUrlParam]
 );

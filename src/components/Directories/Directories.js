@@ -9,7 +9,7 @@ import './Directories.scss';
 const Directories = ({directories}) => {
     return (
         <div className='directories-menu'>
-            {directories.map((dir) => {
+            {Object.values(directories).map((dir) => {
                 return <MenuItem key={dir.id} {...dir}/>
             })}
         </div>
