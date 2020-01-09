@@ -33,11 +33,11 @@ const INITIAL_STATE = [
     }
 ];
 
-const categoriesReducer = (state = INITIAL_STATE, action) => {
+const directoriesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         default:
             return state;
     }
 };
 
-export default categoriesReducer;
+export default directoriesReducer;

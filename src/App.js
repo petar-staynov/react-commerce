@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Redirect} from "react-router-dom";
+import {Route, Redirect, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/userSelector";
@@ -13,12 +13,6 @@ import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 import Logout from "./components/Pages/LoginRegister/Logout";
 import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
-
-const HatsPage = () => (<h1>Hats</h1>);
-const JacketsPage = () => (<h1>JACKETS</h1>);
-const SneakerPage = () => (<h1>SNEAKERS</h1>);
-const MensPage = () => (<h1>MEN'S</h1>);
-const WomensPage = () => (<h1>WOMEN'S</h1>);
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -46,31 +40,22 @@ class App extends Component {
     }
 
 
-    authenticationRoute = () => {
-        if (this.props.currentUser) {
-            return (
-                <Redirect to='/'/>
-            )
-        }
-        return (
-            <LoginRegisterContainer/>
-        )
-    };
+    authenticationRoute = () =>
+        this.props.currentUser
+            ? <Redirect to='/'/>
+            : <LoginRegisterContainer/>;
 
     render() {
         return (
             <>
                 <Navbar/>
-                <Route path='/' exact component={Homepage}/>
-                <Route path='/shop' exact component={ShopPage}/>
-                <Route path='/shop/hats' exact component={HatsPage}/>
-                <Route path='/shop/jackets' exact component={JacketsPage}/>
-                <Route path='/shop/sneakers' exact component={SneakerPage}/>
-                <Route path='/shop/mens' exact component={MensPage}/>
-                <Route path='/shop/womens' exact component={WomensPage}/>
-                <Route path='/authenticate' exact render={this.authenticationRoute}/>
-                <Route path='/logout' exact component={Logout}/>
-                <Route path='/checkout' exact component={CheckoutPage}/>
+                <Switch>
+                    <Route exact path='/' component={Homepage}/>
+                    <Route exact path='/shop' component={ShopPage}/>
+                    <Route exact path='/authenticate' render={this.authenticationRoute}/>
+                    <Route exact path='/logout' component={Logout}/>
+                    <Route exact path='/checkout' component={CheckoutPage}/>
+                </Switch>
             </>
         );
     };

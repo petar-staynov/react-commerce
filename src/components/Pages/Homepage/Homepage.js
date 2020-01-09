@@ -1,11 +1,11 @@
 import React from 'react';
 import './Homepage.scss';
-import Category from "../../Categories/Categories";
+import Directories from "../../Directories/Directories";
 
 const Homepage = (props) => {
     return (
         <div className='homepage'>
-            <Category/>
+            <Directories/>
         </div>
     )
 };
