@@ -1,10 +1,10 @@
 import {createSelector} from 'reselect'
 
-const selectCollectionsData = state => state.collections;
+const selectCollectionsData = state => state.collections.collections;
 
 export const selectCollections = createSelector(
     [selectCollectionsData],
-    collectionsData => collectionsData ? collectionsData['collections'] : [],
+    collectionsData => collectionsData ? collectionsData : [],
 );
 
 export const selectCollectionByName = collectionUrlParam => createSelector(
