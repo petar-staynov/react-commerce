@@ -3,7 +3,8 @@ import {Route, Redirect, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/userSelector";
-import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
+import {auth, createUserProfileDocument, createCollection} from "./firebase/firebase.utils";
+import {selectCollections} from "./redux/collections/collectionsSelector";
 
 import './App.css';
 
@@ -31,7 +32,14 @@ class App extends Component {
                 });
             }
 
-            this.props.setCurrentUser(userAuth);
+            /** Create Collections in Firebase **/
+            // this.props.setCurrentUser(userAuth);
+            // const collectionsValues = Object.values(this.props.collections);
+            // const collectionsArr =
+            //     collectionsValues.map(({title, items}) => ({title, items}));
+            // await createCollection('collections', collectionsArr)
+
+
         });
     }
 
