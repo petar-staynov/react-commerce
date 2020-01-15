@@ -17,7 +17,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     const userRef = firestore.doc(`users/${userAuth.uid}`);
     const userSnapshot = await userRef.get();
 
-    if(!userSnapshot.exists){
+    if (!userSnapshot.exists) {
         const {displayName, email} = userAuth;
         const createdAt = new Date();
 
@@ -28,7 +28,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
                 createdAt,
                 ...additionalData
             })
-        }catch (e) {
+        } catch (e) {
             console.log('error creating user', e.message);
         }
     }
@@ -37,6 +37,39 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 };
 
 firebase.initializeApp(config);
+
+export const createCollection = async (collectionName, objects) => {
+    const collectionRef = firestore.collection(collectionName);
+
+    const batch = firestore.batch();
+    objects.forEach(obj => {
+        const newDocRef = collectionRef.doc(obj.title);
+        batch.set(newDocRef, obj);
+    });
+
+    return await batch.commit()
+};
+
+export const getCollections = (collections) => {
+    const collectionsArr = collections.docs.map(doc => {
+        const {title, items} = doc.data();
+
+        const collectionObject = {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items,
+        };
+        return collectionObject;
+    });
+
+    const collectionsMap = collectionsArr.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    }, {});
+
+    return collectionsMap;
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

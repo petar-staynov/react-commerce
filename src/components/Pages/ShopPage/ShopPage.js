@@ -1,16 +1,16 @@
-import React from 'react';
-
-import './ShopPage.scss';
-
+import React, {Component} from 'react';
 import CollectionsOverview from "../../CollectionsOverview/CollectionsOverview";
 
 
-const ShopPage = ({match}) => {
-    return (
-        <div className='shop-page'>
-            <CollectionsOverview/>
-        </div>
-    );
-};
+class ShopPage extends Component {
+    render() {
+        return (
+            <div className='shop-page'>
+                <CollectionsOverview/>
+            </div>
+        );
+    }
+}
 
-export default ShopPage;
+
+export default ShopPage
