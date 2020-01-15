@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/userSelector";
 import {auth, createUserProfileDocument, createCollection} from "./firebase/firebase.utils";
-import {selectCollections} from "./redux/collections/collectionsSelector";
 
 import './App.css';
 
@@ -14,7 +13,6 @@ import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 import Logout from "./components/Pages/LoginRegister/Logout";
 import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
-import CollectionPage from "./components/Pages/CollectionPage/CollectionPage";
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -38,8 +36,6 @@ class App extends Component {
             // const collectionsArr =
             //     collectionsValues.map(({title, items}) => ({title, items}));
             // await createCollection('collections', collectionsArr)
-
-
         });
     }
 
@@ -60,8 +56,7 @@ class App extends Component {
                 <Navbar/>
                 <Switch>
                     <Route exact path='/' component={Homepage}/>
-                    <Route exact path='/shop' component={ShopPage}/>
-                    <Route exact path='/shop/:categoryName' component={CollectionPage}/>
+                    <Route path='/shop' component={ShopPage}/>
                     <Route exact path='/authenticate' render={this.authenticationRoute}/>
                     <Route exact path='/logout' component={Logout}/>
                     <Route exact path='/checkout' component={CheckoutPage}/>

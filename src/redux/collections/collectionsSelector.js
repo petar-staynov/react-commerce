@@ -4,7 +4,7 @@ const selectCollectionsData = state => state.collections;
 
 export const selectCollections = createSelector(
     [selectCollectionsData],
-    collectionsData => collectionsData ? collectionsData['collections'] : null,
+    collectionsData => collectionsData ? collectionsData['collections'] : [],
 );
 
 export const selectCollectionByName = collectionUrlParam => createSelector(

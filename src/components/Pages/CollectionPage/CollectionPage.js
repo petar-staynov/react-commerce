@@ -5,10 +5,11 @@ import {connect} from 'react-redux'
 import './CollectionPage.scss';
 
 import CollectionItem from "../../CollectionItem/CollectionItem";
+import Spinner from "../../Spinner/Spinner";
 
 
 const CollectionPage = ({collection}) => {
-    return (
+    return collection ? (
         <div className='collection-page'>
             <h2 className='title'>{collection.title}</h2>
             <div className='items'>
@@ -19,11 +20,11 @@ const CollectionPage = ({collection}) => {
             </div>
 
         </div>
-    )
+    ) : <Spinner/>
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    collection: selectCollectionByName(ownProps.match.params.categoryName)(state)
+    collection: selectCollectionByName(ownProps.match.params.collectionName)(state)
 });
 
 export default connect(mapStateToProps)(CollectionPage);
