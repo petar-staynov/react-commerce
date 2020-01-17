@@ -1,7 +1,8 @@
 import React from 'react';
 import {Route} from "react-router-dom";
-import {firestore, getCollections} from "../../../firebase/firebase.utils";
-import {UpdateCollections} from "../../../redux/collections/collectionActions";
+import {createStructuredSelector} from "reselect";
+import {fetchCollectionsStartAsync} from "../../../redux/collections/collectionActions";
+import {selectIsCollectionFetching} from "../../../redux/collections/collectionsSelector";
 import {connect} from 'react-redux';
 
 import CollectionsOverview from "../../CollectionsOverview/CollectionsOverview";
@@ -9,17 +10,9 @@ import CollectionPage from "../CollectionPage/CollectionPage";
 
 
 class ShopPage extends React.Component {
-    unsubscribeFromAuthSnapshot = null;
-
     componentDidMount() {
-        const {updateCollections} = this.props;
-        const collectionRef = firestore.collection('collections');
-
-        this.unsubscribeFromAuthSnapshot =
-            collectionRef.onSnapshot(async snapshot => {
-                const collectionsMap = getCollections(snapshot);
-                updateCollections(collectionsMap);
-            });
+        const {fetchCollectionsStartAsync} = this.props;
+        fetchCollectionsStartAsync();
     }
 
     render() {
@@ -33,12 +26,16 @@ class ShopPage extends React.Component {
     }
 }
 
+const mapStateToProps = createStructuredSelector({
+    isCollectionFetching: selectIsCollectionFetching
+});
+
 const mapDispatchToProps = dispatch => ({
-    updateCollections: collectionsMap => dispatch(UpdateCollections(collectionsMap))
+    fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
 });
 
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(ShopPage)
