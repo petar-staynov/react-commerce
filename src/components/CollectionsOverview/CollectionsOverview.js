@@ -7,8 +7,7 @@ import CollectionPreview from "../CollectionPreview/CollectionPreview";
 import {selectCollections} from "../../redux/collections/collectionsSelector";
 import Spinner from "../Spinner/Spinner";
 
-function CollectionsOverview(props) {
-    const {collections} = props;
+function CollectionsOverview({collections}) {
     return collections
         ? (
             <div className='collections-overview'>

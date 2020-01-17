@@ -4,12 +4,12 @@ const selectCollectionsData = state => state.collections;
 
 export const selectCollections = createSelector(
     [selectCollectionsData],
-    collectionsData => collectionsData.collections ? collectionsData.collections : [],
+    collectionsData => collectionsData.collections,
 );
 
 export const selectCollectionByName = collectionUrlParam => createSelector(
     [selectCollections],
-    collections => collections[collectionUrlParam]
+    collections => collections ? collections[collectionUrlParam] : null,
 );
 
 export const selectIsCollectionFetching = createSelector(
