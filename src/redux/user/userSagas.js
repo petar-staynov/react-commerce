@@ -1,6 +1,6 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects';
 import {auth, googleAuthProvider, createUserProfileDocument} from "../../firebase/firebase.utils";
-import {googleSignInSuccess, googleSignInFailure, emailSignInSuccess, emailSignInFailure} from "./userActions";
+import {signInSuccess, signInFailure} from "./userActions";
 import UserActionTypes from "./userActionTypes";
 
 export function* signInWithGoogle() {
@@ -8,13 +8,13 @@ export function* signInWithGoogle() {
         const {user} = yield auth.signInWithPopup(googleAuthProvider);
         const userRef = yield call(createUserProfileDocument, user);
         const userSnapshot = yield userRef.get();
-        yield put(googleSignInSuccess({
+        yield put(signInSuccess({
             id: userSnapshot.id,
             ...userSnapshot.data(),
         }))
 
     } catch (err) {
-        yield put(googleSignInFailure(err))
+        yield put(signInFailure(err))
     }
 }
 
@@ -28,12 +28,12 @@ export function* signInWithEmail({payload: {email, password}}) {
         const userRef = yield call(createUserProfileDocument, user);
         const userSnapshot = yield userRef.get();
 
-        yield put(emailSignInSuccess({
+        yield put(signInSuccess({
             id: userSnapshot.id,
             ...userSnapshot.data(),
         }))
     } catch (err) {
-        yield put(emailSignInFailure(err))
+        yield put(signInFailure(err))
     }
 }
 
