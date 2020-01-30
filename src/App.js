@@ -12,11 +12,15 @@ import Navbar from "./components/Navbar/Navbar";
 import LoginRegisterContainer from "./components/Pages/LoginRegister/LoginRegisterContainer";
 import Logout from "./components/Pages/LoginRegister/Logout";
 import CheckoutPage from "./components/Pages/CheckoutPage/CheckoutPage";
+import {checkUserSession} from "./redux/user/userActions";
 
 class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
+        const {checkUserSession} = this.props;
+        checkUserSession();
+
         //
         //     /** Create Collections in Firebase **/
         //     // this.props.setCurrentUser(userAuth);
@@ -29,7 +33,7 @@ class App extends Component {
 
 
     componentWillUnmount() {
-        this.unsubscribeFromAuth();
+        // this.unsubscribeFromAuth();
     }
 
 
@@ -59,8 +63,11 @@ const mapStateToProps = (state) => ({
     currentUser: selectCurrentUser(state),
 });
 
+const mapDispatchToProps = dispatch => ({
+    checkUserSession: () => dispatch(checkUserSession())
+});
 
 export default connect(
     mapStateToProps,
-    null)
+    mapDispatchToProps)
 (App);
