@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Redirect, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-import {setCurrentUser} from "./redux/user/userActions";
 import {selectCurrentUser} from "./redux/user/userSelector";
 import {auth, createUserProfileDocument, createCollection} from "./firebase/firebase.utils";
 
@@ -18,17 +17,6 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-        //     if (userAuth) {
-        //         const userRef = await createUserProfileDocument(userAuth);
-        //
-        //         userRef.onSnapshot(userSnapshot => {
-        //             this.props.setCurrentUser({
-        //                 id: userSnapshot.id,
-        //                 ...userSnapshot.data(),
-        //             })
-        //         });
-        //     }
         //
         //     /** Create Collections in Firebase **/
         //     // this.props.setCurrentUser(userAuth);
@@ -71,11 +59,8 @@ const mapStateToProps = (state) => ({
     currentUser: selectCurrentUser(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-});
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps)
+    null)
 (App);

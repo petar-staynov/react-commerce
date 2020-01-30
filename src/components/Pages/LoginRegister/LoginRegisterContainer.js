@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Login from "./Login";
 import Register from "./Register";
-import {signInWithGoogle} from "../../../firebase/firebase.utils";
-import {auth, createUserProfileDocument} from "../../../firebase/firebase.utils";
 
 import './LoginRegisterContainer.scss'
 
