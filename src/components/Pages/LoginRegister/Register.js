@@ -5,16 +5,13 @@ import Button from "../../Shared/Button/Button";
 import './Register.scss'
 
 class Register extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        displayName: this.props.displayName,
+        email: this.props.email,
+        password: this.props.password,
+        confirmPassword: this.props.confirmPassword,
+    };
 
-        this.state = {
-            displayName: this.props.displayName,
-            email: this.props.email,
-            password: this.props.password,
-            confirmPassword: this.props.confirmPassword,
-        }
-    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (
@@ -41,7 +38,7 @@ class Register extends Component {
             <div className='sign-up'>
                 <h2 className='title'>I do not have an account</h2>
                 <span>Sign up with email and password</span>
-                <form className='sign-up-form' onSubmit={this.props.handleSubmit}>
+                <form className='sign-up-form' onSubmit={null}>
                     <FormInput
                         type='text'
                         name='displayName'
@@ -75,7 +72,7 @@ class Register extends Component {
                         required
                     />
                     <Button
-                        onClick={this.props.handleRegisterSubmit}
+                        onClick={null}
                     >Register</Button>
                 </form>
             </div>

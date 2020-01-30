@@ -3,7 +3,7 @@ import './FormInput.scss'
 
 const FormInput = ({handleChange, label, ...otherProps}) => {
     let className = 'form-input-label';
-    if(otherProps.value.length) className += ' shrink';
+    if (otherProps.value.length) className += ' shrink';
 
     return (
         <div className='group'>
