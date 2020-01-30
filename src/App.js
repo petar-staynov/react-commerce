@@ -18,25 +18,25 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
-
-                userRef.onSnapshot(userSnapshot => {
-                    this.props.setCurrentUser({
-                        id: userSnapshot.id,
-                        ...userSnapshot.data(),
-                    })
-                });
-            }
-
-            /** Create Collections in Firebase **/
-            // this.props.setCurrentUser(userAuth);
-            // const collectionsValues = Object.values(this.props.collections);
-            // const collectionsArr =
-            //     collectionsValues.map(({title, items}) => ({title, items}));
-            // await createCollection('collections', collectionsArr)
-        });
+        // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        //     if (userAuth) {
+        //         const userRef = await createUserProfileDocument(userAuth);
+        //
+        //         userRef.onSnapshot(userSnapshot => {
+        //             this.props.setCurrentUser({
+        //                 id: userSnapshot.id,
+        //                 ...userSnapshot.data(),
+        //             })
+        //         });
+        //     }
+        //
+        //     /** Create Collections in Firebase **/
+        //     // this.props.setCurrentUser(userAuth);
+        //     // const collectionsValues = Object.values(this.props.collections);
+        //     // const collectionsArr =
+        //     //     collectionsValues.map(({title, items}) => ({title, items}));
+        //     // await createCollection('collections', collectionsArr)
+        // });
     }
 
 

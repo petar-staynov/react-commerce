@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './Login.scss'
 import FormInput from "../../Shared/FormInput/FormInput";
 import Button from "../../Shared/Button/Button";
+import {googleSignInStart} from "../../../redux/user/userActions";
+import {connect} from 'react-redux';
+
 
 class Login extends Component {
     constructor(props) {
@@ -26,6 +29,8 @@ class Login extends Component {
 
 
     render() {
+        const {googleSignInStart} = this.props;
+
         return (
             <div className='sign-in'>
                 <h2>I already have an account</h2>
@@ -55,7 +60,8 @@ class Login extends Component {
                             value='Submit form'
                         >Sign in</Button>
                         <Button
-                            onClick={this.props.googleLogin}
+                            type='button'
+                            onClick={googleSignInStart}
                             isGoogleSignIn
                         >Sign in with Google</Button>
                     </div>
@@ -66,4 +72,8 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+    googleSignInStart: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
